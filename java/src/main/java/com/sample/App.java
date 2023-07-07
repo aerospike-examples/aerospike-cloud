@@ -13,7 +13,8 @@ import com.aerospike.client.policy.TlsPolicy;
 public class App 
 {
     public static void main( String[] args )
-    {   // ***
+    {   
+	// ***
         // Setup
         // ***
 
