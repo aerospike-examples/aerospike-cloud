@@ -9,12 +9,12 @@ import (
 )
 
 func main() {
-	//
+	// ***
 	// Setup
-	//
+	// ***
 
-	address := "" // Aerospike Cloud cluster address
-	port := 4000
+	address := ""                            // Aerospike Cloud cluster address
+	port := 4000                             // Aerospike Cloud cluster port
 	host := aerospike.NewHost(address, port) // Create host
 	apiKeyId := ""                           // API Key ID from Aerospike Cloud account
 	apiKeySecret := ""                       // API Key secret from Aerospike Cloud account
@@ -35,9 +35,9 @@ func main() {
 	}
 	defer client.Close()
 
-	//
+	// ***
 	// Write a record
-	//
+	// ***
 
 	// Create a WritePolicy to set the TotalTimeout for writes
 	// default 1000 ms
@@ -61,9 +61,9 @@ func main() {
 	}
 	log.Println("Succesfully wrote record")
 
-	//
+	// ***
 	// Read back the record we just wrote
-	//
+	// ***
 
 	// Create a Policy to set the TotalTimeout for reads
 	// default 1000 ms
