@@ -17,17 +17,17 @@ public class App
         // Setup
         // ***
 
-        String host = ""; // Aerospike Cloud cluster address
-        Integer port = 4000; // Aerospike Cloud cluster port
-        Host[] hosts = new Host[1]; // Create host
+        String host = ""; 			// Aerospike Cloud cluster address
+        Integer port = 4000; 			// Aerospike Cloud cluster port
+        Host[] hosts = new Host[1]; 		// Create host
         hosts[0] = new Host(host, port);
-        String apiKeyId = ""; // API Key ID from Aerospike Cloud account
-        String apiKeySecret = ""; // API Key secret from Aerospike Cloud account
-        String namespace = "aerospike_cloud"; // Cluster namespace
-        String set = "foo"; // Set name within namespace
+        String apiKeyId = ""; 			// API Key ID from Aerospike Cloud account
+        String apiKeySecret = ""; 		// API Key secret from Aerospike Cloud account
+        String namespace = "aerospike_cloud"; 	// Cluster namespace
+        String set = "foo"; 			// Set name within namespace
 
         // Create a ClientPolicy passing in your API credentials
-	    // and setting up TLS (required for Aerospike Cloud)
+	// and setting up TLS (required for Aerospike Cloud)
         TlsPolicy tlsPolicy = new TlsPolicy();
         ClientPolicy clientPolicy = new ClientPolicy();
         clientPolicy.user = apiKeyId;
@@ -43,11 +43,11 @@ public class App
         IAerospikeClient client = new AerospikeClientProxy(clientPolicy, hosts);
 
         // ***
-	    // Write a record
-	    // ***
+	// Write a record
+	// ***
 
         // Create the record key
-	    // A tuple consisting of namespace, set name, and user defined key
+	// A tuple consisting of namespace, set name, and user defined key
         Key key = new Key(namespace, set, "bar");
 
         // Create a bin to store data within the new record
@@ -63,8 +63,8 @@ public class App
         }
 
         // ***
-	    // Read back the record we just wrote
-	    // ***
+	// Read back the record we just wrote
+	// ***
 
         // Read the record
         try {
