@@ -15,11 +15,11 @@ func main() {
 
 	address := "" // Aerospike Cloud cluster address
 	port := 4000
-	host := aerospike.NewHost(address, port)
-	apiKeyId := ""                 // API Key ID from Aerospike Cloud account
-	apiKeySecret := ""             // API Key secret from Aerospike Cloud account
-	namespace := "aerospike_cloud" // Cluster namespace
-	set := "foo"                   // Set name within namespace
+	host := aerospike.NewHost(address, port) // Create host
+	apiKeyId := ""                           // API Key ID from Aerospike Cloud account
+	apiKeySecret := ""                       // API Key secret from Aerospike Cloud account
+	namespace := "aerospike_cloud"           // Cluster namespace
+	set := "foo"                             // Set name within namespace
 
 	// Create a ClientPolicy passing in your API credentials
 	// and setting up TLS (required for Aerospike Cloud)
