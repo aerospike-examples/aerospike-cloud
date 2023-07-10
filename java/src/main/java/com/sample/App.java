@@ -18,14 +18,14 @@ public class App
         // Setup
         // ***
 
-        String host = ""; 			// Aerospike Cloud cluster address
-        Integer port = 4000; 			// Aerospike Cloud cluster port
-        Host[] hosts = new Host[1]; 		// Create host
+        String host = "AEROSPIKE_CLOUD_HOSTNAME"; 	        // Aerospike Cloud cluster address
+        Integer port = 4000; 			                // Aerospike Cloud cluster port
+        Host[] hosts = new Host[1];     		        // Create host
         hosts[0] = new Host(host, port);
-        String apiKeyId = ""; 			// API Key ID from Aerospike Cloud account
-        String apiKeySecret = ""; 		// API Key secret from Aerospike Cloud account
-        String namespace = "aerospike_cloud"; 	// Cluster namespace
-        String set = "foo"; 			// Set name within namespace
+        String apiKeyId = "AEROSPIKE_CLOUD_API_KEY_ID";         // API Key ID from Aerospike Cloud account
+        String apiKeySecret = "AEROSPIKE_CLOUD_API_KEY_SECRET"; // API Key secret from Aerospike Cloud account
+        String namespace = "aerospike_cloud"; 	                // Cluster namespace
+        String set = "foo"; 			                // Set name within namespace
 
         // Create a ClientPolicy passing in your API credentials
 	// and setting up TLS (required for Aerospike Cloud)
