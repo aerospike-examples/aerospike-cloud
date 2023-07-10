@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/tls"
 	"log"
+	"os"
 	"time"
 
 	"github.com/aerospike/aerospike-client-go/v6"
@@ -13,13 +14,13 @@ func main() {
 	// Setup
 	// ***
 
-	address := "AEROSPIKE_CLOUD_HOSTNAME"	         // Aerospike Cloud cluster address
-	port := 4000                                     // Aerospike Cloud cluster port
-	host := aerospike.NewHost(address, port)         // Create host
-	apiKeyId := "AEROSPIKE_CLOUD_API_KEY_ID"         // API Key ID from Aerospike Cloud account
-	apiKeySecret := "AEROSPIKE_CLOUD_API_KEY_SECRET" // API Key secret from Aerospike Cloud account
-	namespace := "aerospike_cloud"                   // Cluster namespace
-	set := "foo"                                     // Set name within namespace
+	address := os.Getenv("AEROSPIKE_CLOUD_HOSTNAME")            // Aerospike Cloud cluster address
+	port := 4000                                                // Aerospike Cloud cluster port
+	host := aerospike.NewHost(address, port)                    // Create host
+	apiKeyId := os.Getenv("AEROSPIKE_CLOUD_API_KEY_ID")         // API Key ID from Aerospike Cloud account
+	apiKeySecret := os.Getenv("AEROSPIKE_CLOUD_API_KEY_SECRET") // API Key secret from Aerospike Cloud account
+	namespace := "aerospike_cloud"                              // Cluster namespace
+	set := "foo"                                                // Set name within namespace
 
 	// Create a ClientPolicy passing in your API credentials
 	// and setting up TLS (required for Aerospike Cloud)

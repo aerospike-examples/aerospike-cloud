@@ -18,12 +18,12 @@ public class App
         // Setup
         // ***
 
-        String host = "AEROSPIKE_CLOUD_HOSTNAME"; 	        // Aerospike Cloud cluster address
+        String host = System.getenv("AEROSPIKE_CLOUD_HOSTNAME");     // Aerospike Cloud cluster address
         Integer port = 4000; 			                // Aerospike Cloud cluster port
         Host[] hosts = new Host[1];     		        // Create host
         hosts[0] = new Host(host, port);
-        String apiKeyId = "AEROSPIKE_CLOUD_API_KEY_ID";         // API Key ID from Aerospike Cloud account
-        String apiKeySecret = "AEROSPIKE_CLOUD_API_KEY_SECRET"; // API Key secret from Aerospike Cloud account
+        String apiKeyId = System.getenv("AEROSPIKE_CLOUD_API_KEY_ID");         // API Key ID from Aerospike Cloud account
+        String apiKeySecret = System.getenv("AEROSPIKE_CLOUD_API_KEY_SECRET"); // API Key secret from Aerospike Cloud account
         String namespace = "aerospike_cloud"; 	                // Cluster namespace
         String set = "foo"; 			                // Set name within namespace
 
