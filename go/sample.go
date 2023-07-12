@@ -30,7 +30,7 @@ func main() {
 	clientPolicy.TlsConfig = &tls.Config{}
 
 	// Create the client and connect to the database
-	client, err := aerospike.NewGrpcClient(clientPolicy, host)
+	client, err := aerospike.NewProxyClient(clientPolicy, host)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -2,7 +2,7 @@ module sample/code
 
 go 1.20
 
-require github.com/aerospike/aerospike-client-go/v6 v6.12.1-0.20230531160241-301c49caf3dc
+require github.com/aerospike/aerospike-client-go/v6 v6.12.1-0.20230711150422-4737240c6ead
 
 require (
 	github.com/golang/protobuf v1.5.3 // indirect
