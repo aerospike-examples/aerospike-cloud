@@ -18,10 +18,8 @@ public class App
         // Setup
         // ***
 
-        String host = System.getenv("AEROSPIKE_CLOUD_HOSTNAME");     		// Aerospike Cloud cluster address
+        String address = System.getenv("AEROSPIKE_CLOUD_HOSTNAME");     		// Aerospike Cloud cluster address
         Integer port = 4000; 			                		// Aerospike Cloud cluster port
-        Host[] hosts = new Host[1];     		        		// Create host
-        hosts[0] = new Host(host, port);
         String apiKeyId = System.getenv("AEROSPIKE_CLOUD_API_KEY_ID");         	// API Key ID from Aerospike Cloud account
         String apiKeySecret = System.getenv("AEROSPIKE_CLOUD_API_KEY_SECRET"); 	// API Key secret from Aerospike Cloud account
         String namespace = "aerospike_cloud"; 	                		// Cluster namespace
@@ -41,7 +39,7 @@ public class App
         clientPolicy.writePolicyDefault.totalTimeout = 5000;
 
         // Create the client and connect to the database
-        IAerospikeClient client = new AerospikeClientProxy(clientPolicy, hosts);
+        IAerospikeClient client = new AerospikeClientProxy(clientPolicy, new Host(address, port));
 
         // ***
 	// Write a record
@@ -60,7 +58,7 @@ public class App
             System.out.println("Successfully wrote record");
         }
         catch (AerospikeException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         // ***
@@ -73,7 +71,7 @@ public class App
             System.out.format("Record: %s", record.bins);
         }
         catch (AerospikeException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         finally {
             client.close();
