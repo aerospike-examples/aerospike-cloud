@@ -42,7 +42,7 @@ public class App
 	// Write a record
 	// ***
 
-            // Set the totalTimeout default for writes
+        // Set the totalTimeout for writes
         // default 1000 ms
         WritePolicy writePolicy = new WritePolicy();
         writePolicy.totalTimeout = 5000;
@@ -67,7 +67,7 @@ public class App
 	// Read back the record we just wrote
 	// ***
         
-        // Set the totalTimeout default for reads
+        // Set the totalTimeout for reads
         // default 1000 ms
         Policy readPolicy = new Policy();
         readPolicy.totalTimeout = 5000;
