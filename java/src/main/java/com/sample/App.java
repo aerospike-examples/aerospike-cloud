@@ -9,6 +9,8 @@ import com.aerospike.client.Key;
 import com.aerospike.client.Record;
 import com.aerospike.client.policy.ClientPolicy;
 import com.aerospike.client.policy.TlsPolicy;
+import com.aerospike.client.policy.Policy;
+import com.aerospike.client.policy.WritePolicy;
 
 public class App 
 {
@@ -33,17 +35,17 @@ public class App
         clientPolicy.password = apiKeySecret;
         clientPolicy.tlsPolicy = tlsPolicy;
 
-        // Set the totalTimeout default for reads and writes
-        // default 1000 ms
-        clientPolicy.readPolicyDefault.totalTimeout = 5000;
-        clientPolicy.writePolicyDefault.totalTimeout = 5000;
-
         // Create the client and connect to the database
         IAerospikeClient client = new AerospikeClientProxy(clientPolicy, new Host(address, port));
 
         // ***
 	// Write a record
 	// ***
+
+            // Set the totalTimeout default for writes
+        // default 1000 ms
+        WritePolicy writePolicy = new WritePolicy();
+        writePolicy.totalTimeout = 5000;
 
         // Create the record key
 	// A tuple consisting of namespace, set name, and user defined key
@@ -54,7 +56,7 @@ public class App
 
         //Write the record to your database
         try {
-            client.put(null, key, bin);
+            client.put(writePolicy, key, bin);
             System.out.println("Successfully wrote record");
         }
         catch (AerospikeException e) {
@@ -64,10 +66,15 @@ public class App
         // ***
 	// Read back the record we just wrote
 	// ***
-
+        
+        // Set the totalTimeout default for reads
+        // default 1000 ms
+        Policy readPolicy = new Policy();
+        readPolicy.totalTimeout = 5000;
+                
         // Read the record
         try {
-            Record record = client.get(null, key);
+            Record record = client.get(readPolicy, key);
             System.out.format("Record: %s", record.bins);
         }
         catch (AerospikeException e) {
