@@ -55,15 +55,15 @@ func main() {
 	// Create a bin to store data within the new record
 	bin := aerospike.NewBin("myBin", "Hello World!")
 
-	//Write the record to your database
+	// Write the record to your database
 	err = client.PutBins(writePolicy, key, bin)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Println("Succesfully wrote record")
+	log.Println("Successfully wrote record")
 
 	// ***
-	// Read back the record we just wrote
+	// Read the record
 	// ***
 
 	// Create a Policy to set the TotalTimeout for reads
