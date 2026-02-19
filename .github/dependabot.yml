@@ -1,0 +1,11 @@
+version: 2
+updates:
+  - package-ecosystem: gomod
+    directory: /go
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /java
+    schedule:
+      interval: daily
